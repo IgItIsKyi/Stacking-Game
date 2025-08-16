@@ -1,0 +1,70 @@
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.game-container {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+
+.grid {
+    width: 225px;
+    height: 420px;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    background-color: black;
+    outline: blue solid 3px z;
+    border-radius: 4px;
+}
+
+.grid div {
+    width: 20px;
+    height: 20px;
+}
+
+.t-l { background-color: #FF5733; box-shadow: 0 0 8px 2px #FF5733; }
+.t-z { background-color: #C70039; box-shadow: 0 0 8px 2px #C70039; }
+.t-t { background-color: #900C3F; box-shadow: 0 0 8px 2px #900C3F; }
+.t-o { background-color: #FFC300; box-shadow: 0 0 8px 2px #FFC300; }
+.t-i { background-color: #1E90FF; box-shadow: 0 0 8px 2px #1E90FF; }
+
+.tetromino {
+    background-color: rgb(36, 207, 36);
+    box-shadow: 0 0 5px 2px rgb(36, 207, 36) inset;
+    border: 1px solid white;
+    z-index: 1;
+}
+
+.mini-title {
+    display: flex;
+    color: white;
+    text-align: center;
+    font-size: 12px;
+    margin: 0 25px;
+    padding: 0;
+}
+
+.mini-grid {
+    margin-left: 50px;
+    height: 100px;
+    width: 100px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background-color: black;
+    border: 2px solid white;
+    border-radius: 4px;
+    place-items: center;
+}
+
+.mini-grid div {
+    width: 20px;
+    height: 20px;
+
+}
