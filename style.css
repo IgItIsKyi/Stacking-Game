@@ -11,8 +11,28 @@ body {
     align-items: center;
 
 }
+button {
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+}
 
+button:hover {
+    transition: 0.5s;
+    background-color: white;
+    color: black;
+}
 
+h3 {
+    color: white;
+    font-size: 20px;
+    margin-left: 20px;
+}
 
 .grid {
     width: 225px;
@@ -20,7 +40,7 @@ body {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     background-color: black;
-    outline: blue solid 3px z;
+    border: 2px solid white;
     border-radius: 4px;
 }
 
@@ -36,8 +56,6 @@ body {
 .t-i { background-color: #1E90FF; box-shadow: 0 0 8px 2px #1E90FF; }
 
 .tetromino {
-    background-color: rgb(36, 207, 36);
-    box-shadow: 0 0 5px 2px rgb(36, 207, 36) inset;
     border: 1px solid white;
     z-index: 1;
 }

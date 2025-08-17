@@ -8,8 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let timerId = null;
     let score = 0;
 
-    console.log(squares);
-
 
 
     // Tetris shapes 
@@ -62,12 +60,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function draw() {
         current.forEach(index => {
+            squares[currentPosition + index].classList.add(getTetriminoColor(tetriminoShapes[random]));
             squares[currentPosition + index].classList.add('tetromino');
         });
     }
 
     function undraw() {
         current.forEach(index => {
+            squares[currentPosition + index].classList.remove(getTetriminoColor(tetriminoShapes[random]));
             squares[currentPosition + index].classList.remove('tetromino');
         });
     }
@@ -106,8 +106,8 @@ document.addEventListener('DOMContentLoaded', () => {
             currentRotation = 0;
             current = tetriminoShapes[random][currentRotation];
 
-            console.log(tetriminoShapes[random]);
             currentPosition = 4;
+            
             draw();
             displayShape();
             addScore();
@@ -155,6 +155,12 @@ const displaySquares = document.querySelectorAll('.mini-grid div');
 const displayWidth = 4;
 let displayIndex = 0;
 
+const colors = ['t-l', 't-z', 't-t', 't-o', 't-i'];
+
+function getTetriminoColor(tetrimino) {
+    const index = tetriminoShapes.indexOf(tetrimino);
+    return colors[index];
+}
 
 const upNextTetrominoes = [
     [1, 5, 9, 2],       // lTetromino (centered)
@@ -169,9 +175,25 @@ const upNextTetrominoes = [
 function displayShape() {
     // remove any trace of a tetromino form the entire grid
     displaySquares.forEach(square => {
+        if (square.classList.contains('t-l')) {
+            square.classList.remove('t-l');
+        }
+        if (square.classList.contains('t-z')) {
+            square.classList.remove('t-z');
+        }
+        if (square.classList.contains('t-t')) {
+            square.classList.remove('t-t');
+        }
+        if (square.classList.contains('t-o')) {
+            square.classList.remove('t-o');
+        }
+        if (square.classList.contains('t-i')) {
+            square.classList.remove('t-i');
+        }
         square.classList.remove('tetromino');
     });
     upNextTetrominoes[nextRandom].forEach(index => {
+        displaySquares[displayIndex + index].classList.add(getTetriminoColor(tetriminoShapes[nextRandom]));
         displaySquares[displayIndex + index].classList.add('tetromino');
     });
 
@@ -183,6 +205,7 @@ startBtn.addEventListener('click', () => {
         clearInterval(timerId);
         timerId = null;
     } else {
+        document.addEventListener('keydown', control);
         draw();
         timerId = setInterval(moveDown, 1000);
         nextRandom = Math.floor(Math.random()*tetriminoShapes.length);
@@ -201,6 +224,21 @@ function addScore() {
             row.forEach(index => {
                 squares[index].classList.remove('taken');
                 squares[index].classList.remove('tetromino');
+                if (squares[index].classList.contains('t-l')) {
+                    squares[index].classList.remove('t-l');
+                }
+                if (squares[index].classList.contains('t-z')) {
+                    squares[index].classList.remove('t-z');
+                }
+                if (squares[index].classList.contains('t-t')) {
+                    squares[index].classList.remove('t-t');
+                }
+                if (squares[index].classList.contains('t-o')) {
+                    squares[index].classList.remove('t-o');
+                }
+                if (squares[index].classList.contains('t-i')) {
+                    squares[index].classList.remove('t-i');
+                }
             });
             const squaresRemoved = squares.splice(i, width);
             squares = squaresRemoved.concat(squares);
@@ -211,6 +249,22 @@ function addScore() {
 
 function clearAllTetrominoes() {
     squares.forEach(square => {
+        if (square.classList.contains('t-l')) {
+            square.classList.remove('t-l');
+        }
+        if (square.classList.contains('t-z')) {
+            square.classList.remove('t-z');
+        }
+        if (square.classList.contains('t-t')) {
+            square.classList.remove('t-t');
+        }
+        if (square.classList.contains('t-o')) {
+            square.classList.remove('t-o');
+        }
+        if (square.classList.contains('t-i')) {
+            square.classList.remove('t-i');
+        }
+
         square.classList.remove('tetromino');
     });
 
@@ -231,7 +285,6 @@ function gameOver() {
         clearAllTetrominoes();
     }
 }
-
 
 
 
